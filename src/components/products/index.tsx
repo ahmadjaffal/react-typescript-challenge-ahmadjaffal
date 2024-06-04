@@ -16,7 +16,7 @@ const Products: React.FC = () => {
                 ))
                     : <p>No Products to Display</p>}
             </div>
-            {loading ?? <Loader />}
+            {loading && <Loader />}
         </>
     );
 }

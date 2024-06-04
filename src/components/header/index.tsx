@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {
     toggleCartMenu: () => void;
@@ -13,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCartMenu, toggleLoginMenu }) => {
                     <div className="flex justify-between flex-col sm:flex-row gap-4 items-center">
                         {/* <!-- store logo & title --> */}
                         <div className="flex flex-col sm:flex-row items-center gap-4 relative">
-                            <a href="index.html" className="block w-[80px] h-[80px] bg-gray-50 p-2 rounded-full border-4 border-secondary-50">
+                            <a href="/" className="block w-[80px] h-[80px] bg-gray-50 p-2 rounded-full border-4 border-secondary-50">
                                 <img src="https://cdn.salla.network/images/logo/logo-square.png" alt="Logo" />
                             </a>
                             <div className="flex flex-col">
