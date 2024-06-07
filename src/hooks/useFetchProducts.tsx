@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Category, Product } from '../types/types';
+import { Categor, Product } from '../types/types';
 
-const useFetchProducts = (category: Category = null) => {
+const useFetchProducts = (category: Categor = null) => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);

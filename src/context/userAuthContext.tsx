@@ -1,28 +1,11 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, ReactNode } from 'react';
+import { UserAuthContext } from '../types/types';
 
-// Define the shape of the authentication context state
-interface AuthContextType {
-    isAuthenticated: boolean;
-    loading: boolean;
-    username: string | null;
-    login: (username: string, password: string) => Promise<{ success: boolean, message: string }>;
-    logout: () => void;
-}
+// Create a context with a default value
+export const AuthContext = createContext<UserAuthContext | undefined>(undefined);
 
-// Create the context with a default value
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-// Define a custom hook to use the AuthContext
-export const useAuth = () => {
-    const context = useContext(AuthContext);
-    if (!context) {
-        throw new Error('useAuth must be used within an AuthProvider');
-    }
-    return context;
-};
-
-// Define the provider component
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
+// Define the context provider component
+export const UserAuthProvider = ({ children }: { children: ReactNode }) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
     const [username, setUsername] = useState<string | null>(null);
@@ -46,7 +29,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             }
 
             const data = await response.json();
-            console.log(data);
 
             // Assuming the API returns a token on successful login
             if (data.token) {
@@ -59,7 +41,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 throw new Error('Login failed');
             }
         } catch (error) {
-            console.error('Error during login:', error);
             return { success: false, message: 'Username or Password is incorrect!' };
         }
         finally {

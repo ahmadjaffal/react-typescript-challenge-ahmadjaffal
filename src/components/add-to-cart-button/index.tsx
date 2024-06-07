@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product } from '../../types/types';
-import { useAuth } from '../../context/userAuthContext';
+import { useUserAuth } from '../../hooks/useUserAuth';
 
 
 interface AddToCartButtonProps {
@@ -9,7 +9,7 @@ interface AddToCartButtonProps {
 }
 
 const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product, isDetails = false }) => {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated } = useUserAuth();
 
     return (
         <>

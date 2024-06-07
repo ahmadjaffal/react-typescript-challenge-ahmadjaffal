@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../../context/userAuthContext';
+import { useUserAuth } from '../../hooks/useUserAuth';
 
 interface HeaderProps {
     toggleCartMenu: () => void;
@@ -7,7 +7,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleCartMenu, toggleLoginMenu }) => {
-    const { isAuthenticated, username } = useAuth();
+    const { isAuthenticated, username } = useUserAuth();
 
     return (
         <header className="w-full">

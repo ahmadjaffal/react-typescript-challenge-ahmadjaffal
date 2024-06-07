@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AuthProvider } from '../src/context/userAuthContext';
+import { UserAuthProvider } from '../src/context/userAuthContext';
 import Routes from './routes'
 import Header from './components/header';
 import Modals from './components/modals';
@@ -20,7 +20,7 @@ const App: React.FC = () => {
   return (
     <main className="w-full main flex-auto">
       <div className="container mx-auto">
-        <AuthProvider>
+        <UserAuthProvider>
           <Header
             toggleCartMenu={toggleCartMenu}
             toggleLoginMenu={toggleLoginMenu}
@@ -33,7 +33,7 @@ const App: React.FC = () => {
             toggleCartMenu={toggleCartMenu}
           />
           <Footer />
-        </AuthProvider>
+        </UserAuthProvider>
       </div>
     </main>
   );

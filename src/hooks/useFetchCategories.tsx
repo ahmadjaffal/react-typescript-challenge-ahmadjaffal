@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Category } from '../types/types';
 
-const useFetchCategories = (productId: number | null) => {
-    const [product, setProduct] = useState<Category | null>(null);
+const useFetchCategories = () => {
+    const [categories, setCategories] = useState<Category[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        if (productId !== null) {
-            fetchCategories();
-        }
-    }, [productId]);
+        fetchCategories();
+    }, []);
 
     const fetchCategories = async () => {
         setLoading(true);
@@ -20,8 +18,8 @@ const useFetchCategories = (productId: number | null) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            const data: Category = await response.json();
-            setProduct(data);
+            const data: Category[] = await response.json();
+            setCategories(data);
         } catch (err) {
             setError('Error fetching products');
         } finally {
@@ -29,7 +27,7 @@ const useFetchCategories = (productId: number | null) => {
         }
     };
 
-    return { product, loading, error };
+    return { categories, loading, error };
 };
 
 export default useFetchCategories;

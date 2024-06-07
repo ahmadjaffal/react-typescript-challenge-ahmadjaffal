@@ -13,13 +13,14 @@ export interface Product {
     rating: Rating;
 }
 
-export interface User {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
+export interface UserAuthContext {
+    isAuthenticated: boolean;
+    loading: boolean;
+    username: string | null;
+    login: (username: string, password: string) => Promise<{ success: boolean, message: string }>;
+    logout: () => void;
 }
 
-export type Category = string | null;
+export type Category = string[];
+
+export type Categor = string | null;
