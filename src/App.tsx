@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './App.scss';
+import { AuthProvider } from '../src/context/userAuthContext';
 import Routes from './routes'
 import Header from './components/header';
+import Modals from './components/modals';
 import Footer from './components/footer';
-import Cart from './components/cart';
-import Login from './components/login';
+import './App.scss';
 
 const App: React.FC = () => {
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
@@ -19,21 +19,21 @@ const App: React.FC = () => {
 
   return (
     <main className="w-full main flex-auto">
-      <div className="container">
-        <Header
-          toggleCartMenu={toggleCartMenu}
-          toggleLoginMenu={toggleLoginMenu}
-        />
-        <Routes />
-        <Login
-          isLoginOpen={isLoginOpen}
-          toggleLoginMenu={toggleLoginMenu}
-        />
-        <Cart
-          isCartOpen={isCartOpen}
-          toggleCartMenu={toggleCartMenu}
-        />
-        <Footer />
+      <div className="container mx-auto">
+        <AuthProvider>
+          <Header
+            toggleCartMenu={toggleCartMenu}
+            toggleLoginMenu={toggleLoginMenu}
+          />
+          <Routes />
+          <Modals
+            isLoginOpen={isLoginOpen}
+            toggleLoginMenu={toggleLoginMenu}
+            isCartOpen={isCartOpen}
+            toggleCartMenu={toggleCartMenu}
+          />
+          <Footer />
+        </AuthProvider>
       </div>
     </main>
   );

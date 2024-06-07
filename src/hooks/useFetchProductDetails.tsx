@@ -1,23 +1,9 @@
 import { useState, useEffect } from 'react';
+import { Product } from '../types/types';
 
-export interface Rating {
-    rate: number;
-    count: number;
-}
-
-export interface Product {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: Rating;
-}
-
-const useFetchProductItem = (productId: number | null): { product: Product | null, loading: boolean, error: string | null } => {
+const useFetchProductDetails = (productId: number | null) => {
     const [product, setProduct] = useState<Product | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -46,4 +32,4 @@ const useFetchProductItem = (productId: number | null): { product: Product | nul
     return { product, loading, error };
 };
 
-export default useFetchProductItem;
+export default useFetchProductDetails;

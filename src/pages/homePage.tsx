@@ -1,8 +1,8 @@
 import React from 'react';
-import Slider from '../slider';
-import Products from '../products';
+import Slider from '../components/slider';
+import Products from '../components/products';
 
-const Home: React.FC = () => {
+const HomePage: React.FC = () => {
     return (
         <div className="p-2 sm:p-4 bg-white rounded-lg shadow-4xl">
             <Slider />
@@ -11,4 +11,4 @@ const Home: React.FC = () => {
     );
 }
 
-export default Home;
+export default HomePage;

@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
-  content: ['./src/components/**/*.{tsx,scss,html,js}'],
+  content: [
+    './src/components/**/*.{tsx,scss,html,js}',
+    './src/pages/**/*.{tsx,scss,html,js}'
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -69,7 +72,8 @@ module.exports = {
     }
   },
   plugins: [
-    require('tailwindcss-rtl'),
+    require('tailwindcss'),
+    require('autoprefixer'),
   ]
 };
 

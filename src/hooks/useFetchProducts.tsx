@@ -1,27 +1,11 @@
 import { useState, useEffect } from 'react';
-
-type Category = string | null;
-
-export interface Product {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: Rating;
-}
-
-export interface Rating {
-    rate: number;
-    count: number;
-}
+import { Category, Product } from '../types/types';
 
 const useFetchProducts = (category: Category = null) => {
     const [products, setProducts] = useState<Product[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
-    let ApiUrl = `https://fakestoreapi.com/products`
+    let ApiUrl = `https://fakestoreapi.com/products?limit=12`
 
     if (category !== null) {
         ApiUrl = `https://fakestoreapi.com/products/category/${category}`
