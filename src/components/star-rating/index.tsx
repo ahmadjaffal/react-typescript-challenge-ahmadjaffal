@@ -23,7 +23,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rate = null, isDetails = false 
     }
 
     return (
-        <div className={`flex items-center flex-wrap gap-2 text-gray-300 w-full ${isDetails ? `justify-left` : `justify-center`}`} >
+        <div className={`flex items-center flex-wrap gap-2 text-gray-300 w-full ${isDetails ? `justify-left` : `justify-center`}`} title={`${rate?.toString()} Stars`}>
             {stars}
         </div >
     );

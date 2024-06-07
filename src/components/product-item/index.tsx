@@ -14,15 +14,15 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     return (
         <div className="rounded-lg border-2 border-gray-50 flex flex-col items-start justify-start md:p-3 p-2 relative">
             <Link to={`/product/${product?.id}`} className='block w-full relative mb-4'>
-                <img src={product?.image} alt={product?.title} 
-                className="w-full aspect-4/3 object-cover rounded-lg transform transition-transform duration-300 hover:scale-105" />
+                <img src={product?.image} alt={product?.title} title={product?.title}
+                    className="w-full aspect-4/3 object-cover rounded-lg transform transition-transform duration-300 hover:scale-105" />
             </Link>
             <div className="w-full flex flex-col flex-1 items-start justify-start gap-4">
                 <div className="flex items-center justify-center flex-col gap-1 w-full">
                     <Link to={`/product/${product?.id}`} className='block w-full text-primary text-center'>
                         <h2 className="text-sm">{product?.title}</h2>
                     </Link>
-                    <small className="block text-xs w-full text-center">{product?.category}</small>
+                    <small className="block text-xs w-full text-center capitalize">{product?.category}</small>
                 </div>
                 <StarRating rate={product?.rating?.rate} isDetails={false} />
             </div>

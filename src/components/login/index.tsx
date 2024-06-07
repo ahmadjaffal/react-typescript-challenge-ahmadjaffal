@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { disableScroll, enableScroll } from '../../utils/disableScroll';
 import { useUserAuth } from '../../hooks/useUserAuth';
 import Loader from '../loader';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface LoginMenuProps {
     isLoginOpen: boolean;
@@ -36,14 +38,16 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
         const result = await login(inputUsername, inputPassword);
         setResponse(result.message);
         setSuccess(result.success);
+        if (result.success)
+            toast.success("Logged in successfully!");
     };
 
     const handleLogout = () => {
         logout();
-        setResponse('Logged out successfully!');
-        setSuccess(true);
+        setResponse('');
         setInputUsername('');
         setInputPassword('');
+        toast.success("Logged out successfully!");
     };
 
     const forgetPassword = () => {
@@ -66,8 +70,10 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
                     {!isAuthenticated ?
                         <>
                             <div className="flex flex-col text-center items-center justify-center mb-6">
-                                <h2 className="text-lg">Login</h2>
-                                <span className="text-xs text-gray-500">Do you want to login to continue shopping?</span>
+                                <h2 className="text-lg">
+                                    <i className='sicon-user p-2 bg-secondary-50 text-primary rounded-full mr-2'></i>
+                                    Login</h2>
+                                <span className="text-xs text-gray-500 pt-1.5">Do you want to login to continue shopping?</span>
                             </div>
                             <form method="post" action="#" className="flex flex-col w-full">
                                 <div className="mb-4">
@@ -94,8 +100,7 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
                                 {response &&
                                     <div className={`mb-4 text-xs rounded-md p-1.5 relative ${success ? 'text-green-600 bg-green-50' : 'text-red-600 bg-red-50'}`}>
                                         {response}
-                                        <i onClick={closeMessage}
-                                            className='sicon-cancel text-sm cursor-pointer text-black rounded absolute right-1 top-1'></i>
+                                        <i onClick={closeMessage} className='sicon-cancel text-sm cursor-pointer text-black rounded absolute right-1 top-1'></i>
                                     </div>}
                                 {loading &&
                                     <div className='mb-4'>
@@ -107,7 +112,9 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
                                         onClick={handleLogin}
                                         className="w-full bg-primary text-secondary flex-1 p-2 text-md rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors ease-in-out delay-50 hover:bg-primary-darker"
                                         disabled={inputUsername && inputPassword || loading ? false : true}
-                                        title={inputUsername && inputPassword || loading ? 'Login' : 'Fill username & password to login'}>Login</button>
+                                        title={inputUsername && inputPassword || loading ? 'Login' : 'Fill username & password to login'}>
+                                        <i className='sicon-user-check p-1 bg-secondary-50 text-primary rounded-full mr-3'></i>
+                                        Login</button>
                                     <button
                                         type="button"
                                         onClick={forgetPassword}

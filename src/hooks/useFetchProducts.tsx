@@ -1,23 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Categor, Product } from '../types/types';
+import { Product } from '../types/types';
 
-const useFetchProducts = (category: Categor = null) => {
+const useFetchProducts = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
-    let ApiUrl = `https://fakestoreapi.com/products?limit=12`
-
-    if (category !== null) {
-        ApiUrl = `https://fakestoreapi.com/products/category/${category}`
-    }
 
     useEffect(() => {
         fetchProducts();
     }, []);
 
     const fetchProducts = async () => {
+        setLoading(true);
         try {
-            const response = await fetch(ApiUrl);
+            const response = await fetch('https://fakestoreapi.com/products?limit=12');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

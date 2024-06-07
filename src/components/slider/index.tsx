@@ -29,7 +29,7 @@ const Slider: React.FC = () => {
             modules={[Pagination, Navigation]}
             className="mb-6">
             {sliderImages?.length ? sliderImages.map((sliderImage, index) => (
-                <SwiperSlide>
+                <SwiperSlide key={index} >
                     <div className="w-full bg-gray-100 rounded-lg mb-8">
                         <img src={sliderImage} className="w-full aspect-video rounded-lg" alt={`Slider image ${index}`} />
                     </div>

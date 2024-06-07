@@ -12,7 +12,7 @@ const ProductDetailsPage: React.FC = () => {
     let priceBefore = product ? product?.price + 0.6 : 0;
 
     return (
-        <div className="p-2 sm:p-4 bg-white rounded-lg shadow-4xl sm:h-screen">
+        <div className="px-2 py-2 sm:px-4 sm:py-10 bg-white rounded-lg shadow-4xl sm:h-screen">
             {!loading ? <div className="grid grid-cols-1 sm:grid-cols-3 sm:gap-4">
                 <img src={product?.image}
                     className="w-full aspect-4/3 object-cover rounded-lg mb-8 sm:mb-0"
@@ -21,7 +21,7 @@ const ProductDetailsPage: React.FC = () => {
                     <article className="text-sm text-darker-300 leading-[1.8] ">
                         <div className="flx flex-col mb-6 gap-2">
                             <h1 className="text-xl md:text-3xl">{product?.title}</h1>
-                            <small className="text-xs text-gray-500">{product?.category}</small>
+                            <small className="text-xs text-gray-500 capitalize">{product?.category}</small>
                         </div>
                         <StarRating rate={product?.rating?.rate} isDetails={true} />
                         <div className="flex flex-col sm:flex-row w-full my-4 gap-0 sm:gap-2">
@@ -30,7 +30,7 @@ const ProductDetailsPage: React.FC = () => {
                         </div>
                         <div className='h-40'>{product?.description}</div>
                     </article>
-                    <AddToCartButton product={product} isDetails={true} />
+                    {product && <AddToCartButton product={product} isDetails={true} />}
                 </div>
             </div>
                 : <div className='sm:h-screen flex justify-center'><Loader /></div>}

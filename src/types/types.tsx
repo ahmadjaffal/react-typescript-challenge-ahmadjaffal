@@ -11,6 +11,7 @@ export interface Product {
     category: string;
     image: string;
     rating: Rating;
+    quantity: number | null;
 }
 
 export interface UserAuthContext {
@@ -22,5 +23,3 @@ export interface UserAuthContext {
 }
 
 export type Category = string[];
-
-export type Categor = string | null;

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { UserAuthProvider } from '../src/context/userAuthContext';
+import { CartProvider } from '../src/context/cartContext';
+import { ToastContainer } from 'react-toastify';
 import Routes from './routes'
 import Header from './components/header';
 import Modals from './components/modals';
@@ -21,18 +23,21 @@ const App: React.FC = () => {
     <main className="w-full main flex-auto">
       <div className="container mx-auto">
         <UserAuthProvider>
-          <Header
-            toggleCartMenu={toggleCartMenu}
-            toggleLoginMenu={toggleLoginMenu}
-          />
-          <Routes />
-          <Modals
-            isLoginOpen={isLoginOpen}
-            toggleLoginMenu={toggleLoginMenu}
-            isCartOpen={isCartOpen}
-            toggleCartMenu={toggleCartMenu}
-          />
-          <Footer />
+          <CartProvider>
+            <ToastContainer />
+            <Header
+              toggleCartMenu={toggleCartMenu}
+              toggleLoginMenu={toggleLoginMenu}
+            />
+            <Routes />
+            <Modals
+              isLoginOpen={isLoginOpen}
+              toggleLoginMenu={toggleLoginMenu}
+              isCartOpen={isCartOpen}
+              toggleCartMenu={toggleCartMenu}
+            />
+            <Footer />
+          </CartProvider>
         </UserAuthProvider>
       </div>
     </main>
