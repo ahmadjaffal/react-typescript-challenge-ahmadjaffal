@@ -13,7 +13,7 @@
 4- Run npm i.\
 5- Run npm start.
 
-**You can login using this user:**.\
+**You can login using this user:**\
 Username: johnd\
 Password: m38rmF$
 
