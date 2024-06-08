@@ -1,6 +1,6 @@
 # About This Project:
 
-**Name:** React Typescript Challenge - Ahmad Jaffal.\
+**Name:** React Typescript Challenge - Ahmad Jaffal.
 
 **Used API:** Fake Store API
 
