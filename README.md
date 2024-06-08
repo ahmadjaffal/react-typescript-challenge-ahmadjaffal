@@ -2,7 +2,7 @@
 
 **Name:** React Typescript Challenge - Ahmad Jaffal.
 
-**Used API:** Fake Store API
+**Used API:** Fake Store API (https://fakestoreapi.com)
 
 -------------------------------------------------------
 # To Run This React App Locally
