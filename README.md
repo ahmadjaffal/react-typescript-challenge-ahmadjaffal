@@ -1,4 +1,4 @@
-# About This Project:
+# About This App:
 
 **Name:** React Typescript Challenge - Ahmad Jaffal.
 
