@@ -1,6 +1,6 @@
 import React from 'react';
-import Slider from '../components/slider';
-import Products from '../components/products';
+import Slider from '../components/Slider/Slider';
+import Products from '../components/Products/Products';
 
 const HomePage: React.FC = () => {
     return (

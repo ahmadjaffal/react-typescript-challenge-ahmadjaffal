@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import useFetchProductDetails from '../hooks/useFetchProductDetails';
-import AddToCartButton from '../components/add-to-cart-button';
-import StarRating from '../components/star-rating';
-import Loader from '../components/loader';
+import AddToCartButton from '../components/AddToCartButton/AddToCartButton';
+import StarRating from '../components/StarRating/StarRating';
+import Loader from '../components/Loader/Loader';
 
 const ProductDetailsPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -16,7 +16,9 @@ const ProductDetailsPage: React.FC = () => {
             {!loading ? <div className="grid grid-cols-1 sm:grid-cols-3 sm:gap-4">
                 <img src={product?.image}
                     className="w-full aspect-4/3 object-cover rounded-lg mb-8 sm:mb-0"
-                    alt={product?.title} />
+                    alt={product?.title}
+                    title={product?.title}
+                />
                 <div className="flex flex-col gap-4 col-span-2">
                     <article className="text-sm text-darker-300 leading-[1.8] ">
                         <div className="flx flex-col mb-6 gap-2">
@@ -28,7 +30,7 @@ const ProductDetailsPage: React.FC = () => {
                             <span className="font-medium text-md">{`SAR ${product?.price.toFixed(2)}`}</span>
                             <span className="font-medium text-sm line-through text-gray-300">{`SAR ${priceBefore.toFixed(2)}`}</span>
                         </div>
-                        <div className='h-40'>{product?.description}</div>
+                        <div className='sm:h-40'>{product?.description}</div>
                     </article>
                     {product && <AddToCartButton product={product} isDetails={true} />}
                 </div>

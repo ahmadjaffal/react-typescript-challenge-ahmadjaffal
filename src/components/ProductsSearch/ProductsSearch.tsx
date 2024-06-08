@@ -35,7 +35,7 @@ const ProductsSearch: React.FC<ProductsSearchProps> = ({ categories, filterProdu
                     className="w-full p-2 bg-white appearance-none rounded-md border text-md"
                     placeholder="Enter product name..."
                     onChange={handleSearchTermChange} />
-                {searchTerm && <i onClick={resetSearchTerm} title='Clear Search' className='sicon-cancel w-6 bg-red-300 text-white text-lg text-center cursor-pointer text-black rounded absolute right-1 top-1'></i>}
+                {searchTerm && <i onClick={resetSearchTerm} title='Clear Search' className='sicon-cancel w-6 text-primary text-lg text-center cursor-pointer text-black rounded absolute right-1 top-1'></i>}
             </div>
             <div className="flex flex-col gap-1 shrink-0 sm:min-w-[180px]">
                 <label htmlFor="categories" className="hidden">Select a category</label>

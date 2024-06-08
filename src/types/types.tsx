@@ -23,3 +23,12 @@ export interface UserAuthContext {
 }
 
 export type Category = string[];
+
+export type CartState = {
+    cart: Product[];
+};
+
+export type CartAction =
+    | { type: 'ADD_TO_CART'; product: Product }
+    | { type: 'REMOVE_FROM_CART'; productId: number }
+    | { type: 'CLEAR_CART' };

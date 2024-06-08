@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { UserAuthProvider } from '../src/context/userAuthContext';
 import { CartProvider } from '../src/context/cartContext';
 import { ToastContainer } from 'react-toastify';
-import Routes from './routes'
-import Header from './components/header';
-import Modals from './components/modals';
-import Footer from './components/footer';
+import Routes from './routes/Routes'
+import Header from './components/Header/Header';
+import Modals from './components/Modals/Modals';
+import Footer from './components/Footer/Footer';
 import './App.scss';
 
 const App: React.FC = () => {

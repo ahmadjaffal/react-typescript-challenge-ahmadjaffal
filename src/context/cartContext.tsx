@@ -1,14 +1,5 @@
 import React, { createContext, useReducer, ReactNode } from 'react';
-import { Product } from '../types/types';
-
-type CartState = {
-    cart: Product[];
-};
-
-type CartAction =
-    | { type: 'ADD_TO_CART'; product: Product }
-    | { type: 'REMOVE_FROM_CART'; productId: number }
-    | { type: 'CLEAR_CART' };
+import { CartState, CartAction } from '../types/types'
 
 const initialState: CartState = {
     cart: []
@@ -25,13 +16,13 @@ const CartContext = createContext<{
 const cartReducer = (state: CartState, action: CartAction): CartState => {
     switch (action.type) {
         case 'ADD_TO_CART':
-            const existingProduct = state.cart.find(product => product.id === action.product.id);
+            const existingProduct = state.cart.find(product => product?.id === action.product?.id);
             if (existingProduct) {
                 return {
                     ...state,
                     cart: state.cart.map(product => (
-                        product.id === action.product.id
-                            ? { ...product, quantity: (product.quantity || 0) + (action.product.quantity || 0) }
+                        product?.id === action.product?.id
+                            ? { ...product, quantity: (product?.quantity || 0) + (action.product?.quantity || 0) }
                             : product
                     ))
                 };
@@ -44,7 +35,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         case 'REMOVE_FROM_CART':
             return {
                 ...state,
-                cart: state.cart.filter(product => product.id !== action.productId)
+                cart: state.cart.filter(product => product?.id !== action.productId)
             };
         case 'CLEAR_CART':
             return {

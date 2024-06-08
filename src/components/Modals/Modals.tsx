@@ -1,6 +1,6 @@
 import React from "react";
-import Login from "../login";
-import Cart from "../cart";
+import Login from "../Login/Login";
+import Cart from "../Cart/Cart";
 
 interface ModalsProps {
     isLoginOpen: boolean;

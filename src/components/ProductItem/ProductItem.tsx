@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AddToCartButton from '../add-to-cart-button';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 import { Product } from '../../types/types';
-import StarRating from '../star-rating';
+import StarRating from '../StarRating/StarRating';
 
 interface ProductItemProps {
     product: Product;

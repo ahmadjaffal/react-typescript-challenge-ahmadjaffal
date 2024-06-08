@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { disableScroll, enableScroll } from '../../utils/disableScroll';
 import { useUserAuth } from '../../hooks/useUserAuth';
-import Loader from '../loader';
+import Loader from '../Loader/Loader';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -65,8 +65,8 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
                 className={`z-20 fixed top-10 left-0 h-full w-full sm:max-w-[500px] mx-auto transform ${isLoginOpen ? 'translate-x-0' : '-translate-x-full'
                     } transition-transform duration-300 ease-in-out`}>
                 <div className="p-2 sm:p-4 bg-white rounded-lg shadow-4xl">
-                    <i onClick={toggleLoginMenu}
-                        className='sicon-cancel cursor-pointer p-0.5 bg-red-500 text-white rounded m-2 absolute right-1 top-1 transition-colors ease-in-out delay-50 hover:bg-red-700'></i>
+                    <i onClick={toggleLoginMenu} title="Close login"
+                        className='sicon-cancel cursor-pointer text-xl text-primary m-2 absolute right-1 top-1 transition-colors ease-in-out delay-50 hover:text-primary-darker'></i>
                     {!isAuthenticated ?
                         <>
                             <div className="flex flex-col text-center items-center justify-center mb-6">
@@ -113,7 +113,7 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
                                         className="w-full bg-primary text-secondary flex-1 p-2 text-md rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors ease-in-out delay-50 hover:bg-primary-darker"
                                         disabled={inputUsername && inputPassword || loading ? false : true}
                                         title={inputUsername && inputPassword || loading ? 'Login' : 'Fill username & password to login'}>
-                                        <i className='sicon-user-check p-1 bg-secondary-50 text-primary rounded-full mr-3'></i>
+                                        <i className='sicon-user-check p-1 text-base text-secondary-100 rounded-full mr-3'></i>
                                         Login</button>
                                     <button
                                         type="button"
@@ -136,6 +136,7 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
                                 type="button"
                                 onClick={handleLogout}
                                 className="w-full bg-primary text-secondary flex-1 p-2 text-md rounded-md cursor-pointer transition-colors ease-in-out delay-50 hover:bg-primary-darker">
+                                <i className='sicon-user-cancel p-1 text-base text-secondary-100 rounded-full mr-3'></i>
                                 Logout</button>
                         </div>
                     }

@@ -1,10 +1,8 @@
 import React, { createContext, useState, ReactNode } from 'react';
 import { UserAuthContext } from '../types/types';
 
-// Create a context with a default value
 export const AuthContext = createContext<UserAuthContext | undefined>(undefined);
 
-// Define the context provider component
 export const UserAuthProvider = ({ children }: { children: ReactNode }) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
@@ -30,11 +28,9 @@ export const UserAuthProvider = ({ children }: { children: ReactNode }) => {
 
             const data = await response.json();
 
-            // Assuming the API returns a token on successful login
             if (data.token) {
                 setIsAuthenticated(true);
                 setUsername(username);
-                // Save the token to local storage or state management (e.g., Redux)
                 localStorage.setItem('token', data.token);
                 return { success: true, message: 'Login successful' };
             } else {
