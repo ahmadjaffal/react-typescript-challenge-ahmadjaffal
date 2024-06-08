@@ -1,23 +1,35 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { disableScroll, enableScroll } from '../../utils/disableScroll';
+import React, { useState, useContext } from 'react';
 import { CartContext } from '../../context/cartContext';
 import { Product } from '../../types/types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface CartItemProps {
-    product: Product;
+    product: Product; // The product object representing this cart item
 }
 
+/**
+ * Component representing an item in the shopping cart.
+ * @param product The product object representing this cart item
+ */
 const CartItem: React.FC<CartItemProps> = ({ product }) => {
-    const { dispatch } = useContext(CartContext);
-    const [quantity, setQuantity] = useState<number>(product?.quantity ? product?.quantity : 1);
+    const { dispatch } = useContext(CartContext); // Cart context to dispatch cart actions
+    const [quantity, setQuantity] = useState<number>(product?.quantity ? product?.quantity : 1); // Local state for quantity
 
+    /**
+     * Handles the removal of an item from the cart.
+     * @param productId The ID of the product to be removed
+     */
     const handleRemoveFromCart = (productId: number) => {
         dispatch({ type: 'REMOVE_FROM_CART', productId });
         toast.success("Item removed from your cart successfully!");
     };
 
+    /**
+     * Updates the quantity of the item in the cart.
+     * @param type The type of update ('plus' or 'minus')
+     * @param productId The ID of the product whose quantity is to be updated
+     */
     const updateQuantity = (type: string, productId: number) => {
         setQuantity(prevQuantity => {
             let newQuantity = prevQuantity;

@@ -8,13 +8,24 @@ import Modals from './components/Modals/Modals';
 import Footer from './components/Footer/Footer';
 import './App.scss';
 
+/**
+ * App component is the root component of the application.
+ * It provides the main layout, context providers, and top-level components.
+ */
 const App: React.FC = () => {
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [isLoginOpen, setIsLoginOpen] = useState<boolean>(false);
 
+  /**
+   * Toggles the cart menu open/close state.
+   */
   const toggleCartMenu = () => {
     setIsCartOpen(!isCartOpen);
   };
+
+  /**
+   * Toggles the login menu open/close state.
+   */
   const toggleLoginMenu = () => {
     setIsLoginOpen(!isLoginOpen);
   };

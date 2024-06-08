@@ -6,17 +6,23 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface LoginMenuProps {
-    isLoginOpen: boolean;
-    toggleLoginMenu: () => void;
+    isLoginOpen: boolean;            // Flag to determine if the login menu is open or closed
+    toggleLoginMenu: () => void;    // Function to toggle the login menu
 }
 
+/**
+ * Login component to handle user authentication.
+ * @param isLoginOpen Flag to determine if the login menu is open or closed
+ * @param toggleLoginMenu Function to toggle the login menu
+ */
 const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
-    const { isAuthenticated, loading, username, login, logout } = useUserAuth();
-    const [inputUsername, setInputUsername] = useState<string>('');
-    const [inputPassword, setInputPassword] = useState<string>('');
-    const [response, setResponse] = useState<string>('');
-    const [success, setSuccess] = useState<boolean>(false);
+    const { isAuthenticated, loading, username, login, logout } = useUserAuth(); // Authentication state and methods from custom hook
+    const [inputUsername, setInputUsername] = useState<string>(''); // State for username input
+    const [inputPassword, setInputPassword] = useState<string>(''); // State for password input
+    const [response, setResponse] = useState<string>(''); // State for response message
+    const [success, setSuccess] = useState<boolean>(false); // State for success state of login or password reset
 
+    // Effect to toggle scrolling and reset state when opening/closing login menu
     useEffect(() => {
         if (isLoginOpen) {
             disableScroll();
@@ -25,39 +31,43 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
         }
 
         return () => {
-            enableScroll();
-            setResponse('');
-            setSuccess(false);
-            setInputUsername('');
-            setInputPassword('');
+            enableScroll(); // Cleanup to enable scrolling
+            setResponse(''); // Clear response message
+            setSuccess(false); // Reset success state
+            setInputUsername(''); // Clear username input
+            setInputPassword(''); // Clear password input
         };
     }, [isLoginOpen]);
 
+    // Function to handle user login
     const handleLogin = async () => {
         setResponse('');
-        const result = await login(inputUsername, inputPassword);
-        setResponse(result.message);
-        setSuccess(result.success);
+        const result = await login(inputUsername, inputPassword); // Call login function from hook
+        setResponse(result.message); // Set response message
+        setSuccess(result.success); // Set success state
         if (result.success)
-            toast.success("Logged in successfully!");
+            toast.success("Logged in successfully!"); // Show success toast if login is successful
     };
 
+    // Function to handle user logout
     const handleLogout = () => {
-        logout();
-        setResponse('');
-        setInputUsername('');
-        setInputPassword('');
-        toast.success("Logged out successfully!");
+        logout(); // Call logout function from hook
+        setResponse(''); // Clear response message
+        setInputUsername(''); // Clear username input
+        setInputPassword(''); // Clear password input
+        toast.success("Logged out successfully!"); // Show success toast for logout
     };
 
+    // Function to handle forgot password action
     const forgetPassword = () => {
-        setResponse('Reset password link sent to your email.');
-        setSuccess(true);
-    }
+        setResponse('Reset password link sent to your email.'); // Set response message
+        setSuccess(true); // Set success state to true
+    };
 
+    // Function to close response message
     const closeMessage = () => {
         setResponse('');
-    }
+    };
 
     return (
         <>
@@ -81,7 +91,7 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
                                     <input type="text"
                                         name="username"
                                         id="username"
-                                        className="w-full p-2 bg-white appearance-none rounded-md border text-md cursor-pointer"
+                                        className="w-full p-2 bg-white appearance-none rounded-md border text-md cursor-pointer dark:bg-zinc-900 dark:border-zinc-700"
                                         placeholder="Username..."
                                         value={inputUsername}
                                         onChange={(e) => setInputUsername(e.target.value)}
@@ -92,7 +102,7 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
                                     <input type="password"
                                         name="password"
                                         id="password"
-                                        className="w-full p-2 bg-white appearance-none rounded-md border text-md cursor-pointer"
+                                        className="w-full p-2 bg-white appearance-none rounded-md border text-md cursor-pointer dark:bg-zinc-900 dark:border-zinc-700"
                                         placeholder="Password..."
                                         value={inputPassword}
                                         onChange={(e) => setInputPassword(e.target.value)} />

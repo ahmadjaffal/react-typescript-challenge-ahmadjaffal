@@ -3,14 +3,20 @@ import { useUserAuth } from '../../hooks/useUserAuth';
 import { addDarkMode, removeDarkMode } from '../../utils/darkMode';
 
 interface HeaderProps {
-    toggleCartMenu: () => void;
-    toggleLoginMenu: () => void;
+    toggleCartMenu: () => void;     // Function to toggle the cart menu
+    toggleLoginMenu: () => void;    // Function to toggle the login menu
 }
 
+/**
+ * Header component for the application.
+ * @param toggleCartMenu Function to toggle the cart menu
+ * @param toggleLoginMenu Function to toggle the login menu
+ */
 const Header: React.FC<HeaderProps> = ({ toggleCartMenu, toggleLoginMenu }) => {
-    const { isAuthenticated, username } = useUserAuth();
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const { isAuthenticated, username } = useUserAuth(); // Authentication status and username from custom hook
+    const [isDarkMode, setIsDarkMode] = useState(false); // Local state for dark mode toggle
 
+    // Effect to load dark mode preference from localStorage
     useEffect(() => {
         const localStateDark = localStorage.getItem("dark");
         if (localStateDark === 'true') {
@@ -18,6 +24,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCartMenu, toggleLoginMenu }) => {
         }
     }, []);
 
+    // Effect to toggle dark mode and save preference to localStorage
     useEffect(() => {
         if (isDarkMode) {
             addDarkMode();
@@ -27,10 +34,11 @@ const Header: React.FC<HeaderProps> = ({ toggleCartMenu, toggleLoginMenu }) => {
         localStorage.setItem('dark', JSON.stringify(isDarkMode));
 
         return () => {
-            removeDarkMode();
+            removeDarkMode(); // Cleanup function to remove dark mode styles
         };
     }, [isDarkMode]);
 
+    // Function to toggle dark mode
     const toggleDarkMode = () => {
         setIsDarkMode(prevMode => !prevMode);
     };
@@ -62,10 +70,10 @@ const Header: React.FC<HeaderProps> = ({ toggleCartMenu, toggleLoginMenu }) => {
                                 <i className="sicon-shopping-bag"></i>
                             </button>
                             <div className='flex items-center gap-1'>
-                                <div className="flex items-center justify-center bg-secondary-50 dark:bg-gray-200 rounded-full w-10 h-6 p-1 cursor-pointer relative" onClick={toggleDarkMode}>
+                                <div className="flex items-center justify-center bg-secondary-50 dark:bg-gray-200 rounded-full w-10 h-6 p-1 cursor-pointer relative" onClick={toggleDarkMode} title='Toggle Dark/Light mode'>
                                     <div className={`bg-primary dark:bg-secondary left-0 absolute rounded-full w-5 h-5 shadow-md transform duration-300 ${isDarkMode ? 'translate-x-full' : 'translate-x-0'}`}></div>
                                 </div>
-                                <button className="ml-2 text-gray-600 dark:text-gray-300 focus:outline-none" onClick={toggleDarkMode}>
+                                <div className="ml-2 text-gray-600 dark:text-gray-300 focus:outline-none" title={isDarkMode ? 'Dark mode' : 'Light mode'}>
                                     {isDarkMode ?
                                         <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
                                             <path className="fill-gray-200" d="M6.2 1C3.2 1.8 1 4.6 1 7.9 1 11.8 4.2 15 8.1 15c3.3 0 6-2.2 6.9-5.2C9.7 11.2 4.8 6.3 6.2 1Z" />
@@ -82,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCartMenu, toggleLoginMenu }) => {
                                             <path className="fill-yellow-400" d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z" />
                                         </svg>
                                     }
-                                </button>
+                                </div>
                             </div>
                         </div>
                     </div>

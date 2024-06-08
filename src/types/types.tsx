@@ -1,8 +1,3 @@
-export interface Rating {
-    rate: number;
-    count: number;
-}
-
 export interface Product {
     id: number;
     title: string;
@@ -12,7 +7,14 @@ export interface Product {
     image: string;
     rating: Rating;
     quantity: number | null;
-}
+};
+
+export interface Rating {
+    rate: number;
+    count: number;
+};
+
+export type Category = string[];
 
 export interface UserAuthContext {
     isAuthenticated: boolean;
@@ -20,9 +22,7 @@ export interface UserAuthContext {
     username: string | null;
     login: (username: string, password: string) => Promise<{ success: boolean, message: string }>;
     logout: () => void;
-}
-
-export type Category = string[];
+};
 
 export type CartState = {
     cart: Product[];

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { disableScroll, enableScroll } from '../../utils/disableScroll';
 import { CartContext } from '../../context/cartContext';
 import CartItem from '../CartItem/CartItem';
@@ -6,15 +6,20 @@ import { Product } from '../../types/types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 interface CartMenuProps {
-    isCartOpen: boolean;
-    toggleCartMenu: () => void;
+    isCartOpen: boolean;      // Indicates whether the cart menu is open
+    toggleCartMenu: () => void; // Function to toggle the cart menu
 }
 
+/**
+ * Cart component that displays the user's shopping cart.
+ * @param isCartOpen Indicates whether the cart menu is open
+ * @param toggleCartMenu Function to toggle the cart menu
+ */
 const Cart: React.FC<CartMenuProps> = ({ isCartOpen, toggleCartMenu }) => {
-    const { state, dispatch } = useContext(CartContext);
+    const { state, dispatch } = useContext(CartContext); // Cart context for accessing cart state
 
+    // Disable scroll when the cart is open
     useEffect(() => {
         if (isCartOpen) {
             disableScroll();
@@ -27,10 +32,15 @@ const Cart: React.FC<CartMenuProps> = ({ isCartOpen, toggleCartMenu }) => {
         };
     }, [isCartOpen]);
 
+    // Calculate total price of items in the cart
     useEffect(() => {
         calculateTotalPrice();
-    }, [state]);
+    }, [state?.cart]);
 
+    /**
+     * Calculates the total price of all items in the cart.
+     * @returns The total price formatted to 2 decimal places
+     */
     const calculateTotalPrice = () => {
         let totalPrice = 0;
         state.cart.forEach((product: Product) => {
@@ -39,6 +49,9 @@ const Cart: React.FC<CartMenuProps> = ({ isCartOpen, toggleCartMenu }) => {
         return totalPrice.toFixed(2);
     };
 
+    /**
+     * Handles the checkout process, clears the cart and displays a success message.
+     */
     const handleCheckout = () => {
         dispatch({ type: 'CLEAR_CART' });
         toast.success("Checked out successfully!");
@@ -59,10 +72,10 @@ const Cart: React.FC<CartMenuProps> = ({ isCartOpen, toggleCartMenu }) => {
                     </div>
                     <ul className="flex flex-col overflow-auto max-h-60 min-h-20">
                         {state.cart.length ? state.cart.map((product: Product) => (
-                            <CartItem product={product} />
+                            <CartItem product={product} key={product.id} />
                         ))
-                            : <div className='flex items-baseline text-sm justify-center mt-6 bg-yellow-100 p-4 rounded dark:bg-zinc-800'>
-                                <i className='sicon-warning mr-2 p-1.5 bg-yellow-400 text-white rounded-full align-super'></i>
+                            : <div className='flex items-baseline text-sm justify-center mt-6 bg-yellow-50 p-4 rounded dark:bg-zinc-800'>
+                                <i className='sicon-warning mr-2 p-1.5 bg-yellow-300 text-white rounded-full align-super'></i>
                                 <p>Your cart is empty!</p>
                             </div>
                         }

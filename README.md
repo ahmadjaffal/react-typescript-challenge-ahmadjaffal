@@ -1,3 +1,14 @@
+# About This Project:
+
+Name: React Typescript Challenge For Ahmad Jaffal.
+
+Used API: Fake Store API
+
+You login using this user:
+Username: johnd
+Password: m38rmF$
+
+-------------------------------------------------------
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

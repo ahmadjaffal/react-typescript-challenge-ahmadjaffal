@@ -9,3 +9,14 @@
         color: #004956;
     }
 }
+
+body.dark {
+    .swiper-pagination-bullet-active {
+        background-color: #76E8CD;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: #76E8CD;
+    }
+}
