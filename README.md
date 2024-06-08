@@ -9,7 +9,7 @@
 
 1- Clone the code to your local machine.\
 2- Open the app using any IDE.\
-3- Open the terminal in the app directory.\
+3- Open the terminal.\
 4- Run npm i.\
 5- Run npm start.
 
