@@ -29,6 +29,8 @@ export type CartState = {
 };
 
 export type CartAction =
+    | { type: 'INIT_CART'; cart: Product[] }
     | { type: 'ADD_TO_CART'; product: Product }
     | { type: 'REMOVE_FROM_CART'; productId: number }
+    | { type: 'UPDATE_ITEM_QUANTITY'; productId: number; quantity: number }
     | { type: 'CLEAR_CART' };

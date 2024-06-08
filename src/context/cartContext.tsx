@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, ReactNode } from 'react';
+import React, { useEffect, createContext, useReducer, ReactNode } from 'react';
 import { CartState, CartAction } from '../types/types'
 
 const initialState: CartState = {
@@ -15,6 +15,11 @@ const CartContext = createContext<{
 
 const cartReducer = (state: CartState, action: CartAction): CartState => {
     switch (action.type) {
+        case 'INIT_CART':
+            return {
+                ...state,
+                cart: action.cart
+            };
         case 'ADD_TO_CART':
             const existingProduct = state.cart.find(product => product?.id === action.product?.id);
             if (existingProduct) {
@@ -32,12 +37,22 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
                     cart: [...state.cart, { ...action.product }]
                 };
             }
+        case 'UPDATE_ITEM_QUANTITY':
+            return {
+                ...state,
+                cart: state.cart.map(product =>
+                    product?.id === action?.productId
+                        ? { ...product, quantity: action?.quantity }
+                        : product
+                )
+            };
         case 'REMOVE_FROM_CART':
             return {
                 ...state,
                 cart: state.cart.filter(product => product?.id !== action.productId)
             };
         case 'CLEAR_CART':
+            localStorage.removeItem('cart');
             return {
                 ...state,
                 cart: []
@@ -48,7 +63,16 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 };
 
 const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [state, dispatch] = useReducer(cartReducer, initialState);
+    const getInitialState = (): CartState => {
+        const localStateCart = localStorage.getItem("cart");
+        return localStateCart ? { cart: JSON.parse(localStateCart) } : initialState;
+    };
+
+    const [state, dispatch] = useReducer(cartReducer, getInitialState());
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(state.cart));
+    }, [state.cart]);
 
     return (
         <CartContext.Provider value={{ state, dispatch }}>

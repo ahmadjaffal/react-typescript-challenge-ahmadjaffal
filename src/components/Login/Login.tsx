@@ -64,7 +64,7 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
             <div
                 className={`z-20 fixed top-10 left-0 h-full w-full sm:max-w-[500px] mx-auto transform ${isLoginOpen ? 'translate-x-0' : '-translate-x-full'
                     } transition-transform duration-300 ease-in-out`}>
-                <div className="p-2 sm:p-4 bg-white rounded-lg shadow-4xl">
+                <div className="p-2 sm:p-4 bg-white rounded-lg shadow-4xl dark:bg-zinc-900 dark:text-white">
                     <i onClick={toggleLoginMenu} title="Close login"
                         className='sicon-cancel cursor-pointer text-xl text-primary m-2 absolute right-1 top-1 transition-colors ease-in-out delay-50 hover:text-primary-darker'></i>
                     {!isAuthenticated ?
@@ -127,9 +127,9 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
                         </>
                         : <div className="flex flex-col text-center items-center justify-center">
                             <h2 className="text-lg">User Profile</h2>
-                            <div className='my-14'>
+                            <div className='my-10'>
                                 <i className='sicon-user-circle p-2 text-6xl bg-secondary text-white rounded-full'></i>
-                                <h1 className='mt-3 font-bold'>Welcome {username}!</h1>
+                                <h1 className='mt-3 font-bold'>Hello {username}!</h1>
                                 <span className="text-xs text-gray-500 mb-4">You can shop now</span>
                             </div>
                             <button

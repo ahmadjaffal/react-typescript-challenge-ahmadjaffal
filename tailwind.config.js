@@ -5,6 +5,7 @@ module.exports = {
     './src/components/**/*.{tsx,scss}',
     './src/pages/**/*.{tsx,scss}'
   ],
+  darkMode: 'selector',
   theme: {
     extend: {
       fontFamily: {

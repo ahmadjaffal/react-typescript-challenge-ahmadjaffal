@@ -30,9 +30,7 @@ const Products: React.FC = () => {
             <ProductsSearch categories={categories} filterProducts={filterProducts} />
             {productsList?.length ? <div className="grid mmd:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-2 sm:gap-4">
                 {productsList.map((product: Product) => (
-
                     <ProductItem key={product?.id} product={product} />
-
                 ))}
             </div>
                 : <div className={`w-full text-center sm:h-screen mt-8 ${loading ? 'hidden' : ''}`}>
