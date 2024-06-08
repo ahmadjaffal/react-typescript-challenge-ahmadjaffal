@@ -1,10 +1,10 @@
 # About This Project:
 
-Name: React Typescript Challenge For Ahmad Jaffal.
+**Name:** React Typescript Challenge - Ahmad Jaffal.
 
-Used API: Fake Store API
+**Used API:** Fake Store API
 
-You login using this user:
+**You login using this user:**
 Username: johnd
 Password: m38rmF$
 
