@@ -1,17 +1,17 @@
 # About This Project:
 
-**Name:** React Typescript Challenge - Ahmad Jaffal.
+**Name:** React Typescript Challenge - Ahmad Jaffal.\
 
 **Used API:** Fake Store API
 
 -------------------------------------------------------
 # To Run This React App Locally
 
-1- Clone the code to your local machine..\
-2- Open the app using any IDE..\
-3- Open the terminal in the app directory..\
-4- Run npm i..\
-5- Run npm start..\
+1- Clone the code to your local machine.\
+2- Open the app using any IDE.\
+3- Open the terminal in the app directory.\
+4- Run npm i.\
+5- Run npm start.\
 
 **You can login using this user:**.\
 Username: johnd.\
