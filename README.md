@@ -14,8 +14,8 @@
 5- Run npm start.
 
 **You can login using this user:**.\
-Username: johnd.\
-Password: m38rmF$.
+Username: johnd\
+Password: m38rmF$
 
 -------------------------------------------------------
 # Getting Started with Create React App
