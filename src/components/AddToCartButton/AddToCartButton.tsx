@@ -47,7 +47,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product, isDetails = 
     return (
         <>
             {isDetails ? <div className="flex items-center justify-center gap-4">
-                <div className="flex shrink-0 items-center justify-center p-2 border border-1 border-gray-200 rounded-lg">
+                <div className="flex shrink-0 items-center justify-center p-2 border border-1 border-gray-200 rounded-lg dark:bg-zinc-900 dark:border-zinc-700">
                     <button
                         title={isAuthenticated ? '+ Quantity' : 'Login to add items to your cart!'}
                         className="shrink-0 px-2 text-md text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"

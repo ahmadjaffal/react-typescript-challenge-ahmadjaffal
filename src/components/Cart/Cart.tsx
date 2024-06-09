@@ -62,7 +62,7 @@ const Cart: React.FC<CartMenuProps> = ({ isCartOpen, toggleCartMenu }) => {
             <div
                 className={`z-20 fixed top-10 left-0 h-full w-full sm:max-w-[500px] mx-auto transform ${isCartOpen ? 'translate-x-0' : '-translate-x-full'
                     } transition-transform duration-300 ease-in-out`}>
-                <div className="p-4 bg-white rounded-lg shadow-4xl dark:bg-zinc-800 dark:text-white">
+                <div className="p-4 bg-white rounded-lg shadow-4xl dark:bg-zinc-900 dark:text-white">
                     <i onClick={toggleCartMenu} title="Close cart"
                         className='sicon-cancel cursor-pointer text-xl text-primary m-2 absolute right-1 top-1 transition-colors ease-in-out delay-50 hover:text-primary-darker'></i>
                     <div className="flex flex-col mb-6">
@@ -74,13 +74,13 @@ const Cart: React.FC<CartMenuProps> = ({ isCartOpen, toggleCartMenu }) => {
                         {state.cart.length ? state.cart.map((product: Product) => (
                             <CartItem product={product} key={product.id} />
                         ))
-                            : <div className='flex items-baseline text-sm justify-center mt-6 bg-yellow-50 p-4 rounded dark:bg-zinc-800'>
+                            : <div className='flex items-baseline text-sm justify-center mt-6 bg-yellow-50 p-4 rounded dark:bg-zinc-700'>
                                 <i className='sicon-warning mr-2 p-1.5 bg-yellow-300 text-white rounded-full align-super'></i>
                                 <p>Your cart is empty!</p>
                             </div>
                         }
                     </ul>
-                    <div className="flex items-center justify-between px-4 py-8 border-gray-100 border-t border-b-1 mt-4 dark:border-zinc-500">
+                    <div className="flex items-center justify-between px-4 py-8 border-gray-100 border-t border-b-1 mt-4 dark:border-zinc-500 dark:border-zinc-700">
                         <h3 className="font-bold text-xl">Total Cart</h3>
                         <span className="text-xl font-bold">{`SAR ${calculateTotalPrice()}`}</span>
                     </div>

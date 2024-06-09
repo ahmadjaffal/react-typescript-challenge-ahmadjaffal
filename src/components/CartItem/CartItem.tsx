@@ -58,7 +58,7 @@ const CartItem: React.FC<CartItemProps> = ({ product }) => {
                         </div>
                     </div>
                 </div>
-                <div className="flex shrink-0 items-center justify-center p-2 border border-1 border-gray-200 rounded-lg">
+                <div className="flex shrink-0 items-center justify-center p-2 border border-1 border-gray-200 rounded-lg dark:border-zinc-700">
                     <button title="+ Quantity"
                         className="shrink-0 px-2 text-md text-gray-500"
                         onClick={() => updateQuantity('plus', product?.id)}>+</button>

@@ -60,7 +60,7 @@ const Slider: React.FC = () => {
                                 title={`Slide image - ${index}`}
                                 alt={`Slide image - ${index}`}
                             />
-                            <div className="bg-black opacity-50 text-white h-18 absolute bottom-0 w-full p-3">
+                            <div className="bg-black opacity-55 text-white h-18 absolute bottom-0 w-full p-3 dark:opacity-75 rounded-b-lg">
                                 <h1 className='text-xl text-secondary'>{slide?.title}</h1>
                                 <p className='text-sm'>{slide?.description}</p>
                             </div>
