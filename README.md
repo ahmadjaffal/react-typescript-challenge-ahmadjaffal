@@ -7,7 +7,7 @@
 # To Run This React App Locally:
 
 1- Clone the code to your local machine.\
-2- Open the app using any IDE.\
+2- Open the app folder using an IDE.\
 3- Open the terminal.\
 4- Run npm i.\
 5- Run npm start.\
