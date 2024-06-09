@@ -15,7 +15,7 @@ const Products: React.FC = () => {
 
     const [productsList, setProductsList] = useState<Product[]>([]);  // State to hold the list of products to display
     const [isFiltering, setIsFiltering] = useState(false);  // State to track if filtering is active
-    const { products, loading, error } = useFetchProducts();  // Custom hook to fetch products data
+    const { products, loading, setLoading, error } = useFetchProducts();  // Custom hook to fetch products data
     const { categories } = useFetchCategories();  // Custom hook to fetch categories data
 
     // Effect to load initial products
@@ -28,6 +28,7 @@ const Products: React.FC = () => {
 
     // Function to load more products when user scrolls to bottom
     const handleScroll = useCallback(() => {
+        setLoading(true);
         if (
             !isFiltering &&  // Check if filtering is active
             window.innerHeight + document.documentElement.scrollTop + loadMoreThreshold >=
@@ -37,6 +38,7 @@ const Products: React.FC = () => {
             const nextProducts = products.slice(currentLength, currentLength + initialLoadCount);
             setProductsList(prevProducts => [...prevProducts, ...nextProducts]);
         }
+        setLoading(false);
     }, [isFiltering, products, productsList]);
 
     // Attach scroll event listener
@@ -80,13 +82,13 @@ const Products: React.FC = () => {
                 </div>
             ) : (
                 // Render a message when no products are found
-                <div className={`w-full text-center sm:h-screen mt-8 ${loading ? 'hidden' : ''}`}>
+                <div className={`w-full text-center sm:h-40 mt-8 ${loading ? 'hidden' : ''}`}>
                     <i className='sicon-page-search p-1 text-3xl text-secondary mr-2'></i>
                     <span className='text-secondary-dark align-super'>No Products Found!</span>
                 </div>
             )}
             {/* Render loader when loading state is true */}
-            {loading && <div className='sm:h-screen flex justify-center'><Loader /></div>}
+            {loading && <div className='sm:h-20 flex justify-center'><Loader /></div>}
         </>
     );
 }

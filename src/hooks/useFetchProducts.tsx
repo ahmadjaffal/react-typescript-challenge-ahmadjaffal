@@ -30,7 +30,7 @@ const useFetchProducts = () => {
     };
 
     // Return products, loading state, and error state
-    return { products, loading, error };
+    return { products, loading, setLoading, error };
 };
 
 export default useFetchProducts;

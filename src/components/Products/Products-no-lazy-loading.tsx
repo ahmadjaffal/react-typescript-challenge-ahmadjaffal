@@ -9,7 +9,7 @@ import Loader from '../Loader/Loader';
 /**
  * Component to display a list of products, with search and filtering capabilities.
  */
-const ProductsNoInfScolling: React.FC = () => {
+const ProductsNoLazyLoading: React.FC = () => {
     const [productsList, setProductsList] = useState<Product[]>([]);  // State to hold the list of products to display
     const { products, loading, error } = useFetchProducts();           // Custom hook to fetch products data
     const { categories } = useFetchCategories();                      // Custom hook to fetch categories data
@@ -58,4 +58,4 @@ const ProductsNoInfScolling: React.FC = () => {
     );
 }
 
-export default ProductsNoInfScolling;
+export default ProductsNoLazyLoading;

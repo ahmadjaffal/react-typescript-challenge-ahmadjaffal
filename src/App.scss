@@ -1,30 +1,32 @@
+/* dark styles */
 body.dark {
     background-color: #18181B;
     color: white;
 }
 
+/* root style */
 #root {
     width: 100%;
 }
 
-/* width */
+/* Scrollbar width style */
 ::-webkit-scrollbar {
     width: 0.4rem;
 }
 
-/* Track */
+/* Scrollbar track style */
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0.2rem #d3d3d3;
     border-radius: 0.5rem;
 }
 
-/* Handle */
+/* Scrollbar thumb style */
 ::-webkit-scrollbar-thumb {
     background: #004956;
     border-radius: 0.5rem;
 }
 
-/* Handle on hover */
+/* Scrollbar thumb on hover style */
 ::-webkit-scrollbar-thumb:hover {
     background: #1e2f32;
     ;
