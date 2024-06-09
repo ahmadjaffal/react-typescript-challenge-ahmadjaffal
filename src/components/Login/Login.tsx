@@ -74,7 +74,7 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
             <div
                 className={`z-20 fixed top-10 left-0 h-full w-full sm:max-w-[500px] mx-auto transform ${isLoginOpen ? 'translate-x-0' : '-translate-x-full'
                     } transition-transform duration-300 ease-in-out`}>
-                <div className="p-2 sm:p-4 bg-white rounded-lg shadow-4xl dark:bg-zinc-900 dark:text-white">
+                <div className="p-2 sm:p-4 bg-white rounded-lg shadow-4xl dark:bg-zinc-800 dark:text-white">
                     <i onClick={toggleLoginMenu} title="Close login"
                         className='sicon-cancel cursor-pointer text-xl text-primary m-2 absolute right-1 top-1 transition-colors ease-in-out delay-50 hover:text-primary-darker'></i>
                     {!isAuthenticated ?
@@ -91,7 +91,7 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
                                     <input type="text"
                                         name="username"
                                         id="username"
-                                        className="w-full p-2 bg-white appearance-none rounded-md border text-md cursor-pointer dark:bg-zinc-900 dark:border-zinc-700"
+                                        className="w-full p-2 bg-white appearance-none rounded-md border text-md cursor-pointer dark:bg-zinc-800 dark:border-zinc-700"
                                         placeholder="Username..."
                                         value={inputUsername}
                                         onChange={(e) => setInputUsername(e.target.value)}
@@ -102,7 +102,7 @@ const Login: React.FC<LoginMenuProps> = ({ isLoginOpen, toggleLoginMenu }) => {
                                     <input type="password"
                                         name="password"
                                         id="password"
-                                        className="w-full p-2 bg-white appearance-none rounded-md border text-md cursor-pointer dark:bg-zinc-900 dark:border-zinc-700"
+                                        className="w-full p-2 bg-white appearance-none rounded-md border text-md cursor-pointer dark:bg-zinc-800 dark:border-zinc-700"
                                         placeholder="Password..."
                                         value={inputPassword}
                                         onChange={(e) => setInputPassword(e.target.value)} />

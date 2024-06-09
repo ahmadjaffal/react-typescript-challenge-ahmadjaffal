@@ -19,7 +19,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     let priceBefore = product ? product.price + 0.6 : 0;
 
     return (
-        <div className="rounded-lg border-2 border-gray-50 dark:border-zinc-700 flex flex-col items-start justify-start md:p-3 p-2 relative">
+        <div className="rounded-lg border-2 border-gray-50 dark:border-zinc-700 dark:dark:bg-zinc-900 flex flex-col items-start justify-start md:p-3 p-2 relative">
             {/* Link to the product details page */}
             <Link to={`/product/${product?.id}`} className='block w-full relative mb-4' title={product?.title}>
                 <img src={product?.image} alt={product?.title} title={product?.title}

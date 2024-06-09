@@ -21,7 +21,7 @@ const ProductDetailsPage: React.FC = () => {
     }, []);
 
     return (
-        <div className="px-2 py-2 sm:px-4 sm:py-10 bg-white rounded-lg shadow-4xl sm:h-screen dark:bg-zinc-900 dark:text-white">
+        <div className="px-2 py-2 sm:px-4 sm:py-10 bg-white rounded-lg shadow-4xl sm:h-screen dark:bg-zinc-800 dark:text-white">
             {!loading ? (
                 <div className="grid grid-cols-1 sm:grid-cols-3 sm:gap-4">
                     <img
