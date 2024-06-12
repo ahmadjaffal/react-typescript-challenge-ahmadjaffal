@@ -25,7 +25,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
                 cart: action.cart
             };
         case 'ADD_TO_CART':
-            // Add a product to the cart or update its quantity if it already exists
+            // Add a product to the cart or update its quantity if it's already exists
             const existingProduct = state.cart.find(product => product?.id === action.product?.id);
             if (existingProduct) {
                 return {
@@ -59,7 +59,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
                 cart: state.cart.filter(product => product?.id !== action.productId)
             };
         case 'CLEAR_CART':
-            // Clear the cart and remove its data from localStorage
+            // Clear the cart and remove it's data from localStorage
             localStorage.removeItem('cart');
             return {
                 ...state,
@@ -72,25 +72,19 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
 // Define the provider component to provide the cart context to its children
 const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+    // Function to get initial cart state from localStorage or use the default initialState
+    const getInitialState = (): CartState => {
+        const localStateCart = localStorage.getItem("cart");
+        return localStateCart ? { cart: JSON.parse(localStateCart) } : initialState;
+    };
 
     // Use useReducer hook to manage state using cartReducer function and initial state
-    const [state, dispatch] = useReducer(cartReducer, initialState);
-
-    // Effect hook to initialize cart state from localStorage
-    useEffect(() => {
-        const localStateCart = localStorage.getItem("cart");
-        if (localStateCart) {
-            dispatch({
-                type: 'INIT_CART',
-                cart: JSON.parse(localStateCart)
-            });
-        }
-    }, []);
+    const [state, dispatch] = useReducer(cartReducer, getInitialState());
 
     // Effect hook to update localStorage whenever cart state changes
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(state.cart));
-    }, [state.cart]);
+    }, [state?.cart]);
 
     return (
         <CartContext.Provider value={{ state, dispatch }}>
